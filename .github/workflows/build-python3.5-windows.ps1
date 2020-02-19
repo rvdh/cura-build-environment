@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 $gitRef = Split-Path -Path $env:GIT_REF -Leaf
-$tag = "win1809-$gitRef"
+$tag = "$gitRef"
 $imageBase = "$env:DOCKER_SERVER" + "/" + "$env:DOCKER_IMAGE_NAME"
 
 $extraTag = ""

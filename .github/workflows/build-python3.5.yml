@@ -21,7 +21,7 @@ jobs:
         fetch-depth: 1
     - name: Build Linux docker image
       env:
-        DOCKER_IMAGE_NAME: ultimaker/cura-build-environment
+        DOCKER_IMAGE_NAME: ultimaker/cura-build-environment/python3.5-linux
         DOCKER_IMAGE_LATEST_TAG: centos-latest
         GIT_REF: ${{ github.ref }}
         DOCKER_SERVER: ${{ secrets.DockerServer }}
@@ -38,7 +38,7 @@ jobs:
         fetch-depth: 1
     - name: Build Windows docker image
       env:
-        DOCKER_IMAGE_NAME: ultimaker/cura-build-environment
+        DOCKER_IMAGE_NAME: ultimaker/cura-build-environment/python3.5-windows
         DOCKER_IMAGE_LATEST_TAG: win1809-latest
         GIT_REF: ${{ github.ref }}
         DOCKER_SERVER: ${{ secrets.DockerServer }}

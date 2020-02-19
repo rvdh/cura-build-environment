@@ -18,7 +18,7 @@ jobs:
         fetch-depth: 1
     - name: Build docker image
       env:
-        DOCKER_IMAGE_NAME: ultimaker/cura-build-environment
+        DOCKER_IMAGE_NAME: ultimaker/cura-build-environment/python3.7-linux
         GIT_REF: ${{ github.ref }}
         DOCKER_SERVER: ${{ secrets.DockerServer }}
         DOCKER_USER: ${{ secrets.DockerUsername }}

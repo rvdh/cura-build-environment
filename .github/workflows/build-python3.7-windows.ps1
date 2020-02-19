@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 
 $imageBase = "$env:DOCKER_SERVER" + "/" + "$env:DOCKER_IMAGE_NAME"
 
-$tagPrefix = "python3.7-win1809"
+$tagPrefix = ""
 
 $gitRef = Split-Path -Path $env:GIT_REF -Leaf
 $tag = "${tagPrefix}-${gitRef}"
