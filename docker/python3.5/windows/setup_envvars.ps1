@@ -1,4 +1,5 @@
 # Set up environment variables for the cura-build-environment docker image.
+$ErrorActionPreference = "Stop"
 
 # chocolatey doesn't seem to add NSIS to PATH, so we add it here.
 $newPath = "$env:Path"

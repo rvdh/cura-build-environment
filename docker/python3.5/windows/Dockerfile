@@ -44,15 +44,15 @@ ADD . "${CURA_BUILD_ENV_WORK_DIR}"/src
 
 # Get WiX Toolset 3.11.2
 RUN powershell.exe -NoLogo -ExecutionPolicy Bypass -Command \
-    "%CURA_BUILD_ENV_WORK_DIR%"\\src\\docker\\windows\\install_wixtoolset.ps1
+    "%CURA_BUILD_ENV_WORK_DIR%"\\src\\docker\\python3.5\\windows\\install_wixtoolset.ps1
 
 # Build the build environment.
 RUN powershell.exe -NoLogo -ExecutionPolicy Bypass -Command \
-    cmd /c "%CURA_BUILD_ENV_WORK_DIR%"\\src\\docker\\windows\\build_vs2015.cmd
+    cmd /c "%CURA_BUILD_ENV_WORK_DIR%"\\src\\docker\\python3.5\\windows\\build_vs2015.cmd
 
 # Set up environment variables.
 RUN powershell.exe -NoLogo -ExecutionPolicy Bypass -Command \
-    "%CURA_BUILD_ENV_WORK_DIR%"\\src\\docker\\windows\\setup_envvars.ps1
+    "%CURA_BUILD_ENV_WORK_DIR%"\\src\\docker\\python3.5\\windows\\setup_envvars.ps1
 
 # Cleanup
 RUN powershell.exe -NoLogo -ExecutionPolicy Bypass -Command \

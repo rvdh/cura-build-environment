@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 $tmpDir = "C:\temp-cura"
 New-Item -Path $tmpDir -ItemType Directory -Force
 Invoke-WebRequest -UseBasicParsing `

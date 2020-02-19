@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 $gitRef = Split-Path -Path $env:GIT_REF -Leaf
 $tag = "win1809-$gitRef"
 $extraTag = ""
@@ -6,7 +8,7 @@ if ($gitRef -eq "master") {
 }
 
 $imageTag1 = "$env:DOCKER_IMAGE_NAME" + ":" + "$tag"
-docker build -t $imageTag1 -f docker/windows/Dockerfile.vs2015 .
+docker build -t $imageTag1 -f docker/python3.5/windows/Dockerfile .
 if ($extraTag) {
   docker tag $imageTag1 $extraTag
 }

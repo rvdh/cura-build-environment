@@ -1,5 +1,5 @@
 ---
-name: CI/CD for master
+name: Build Linux and Windows Python 3.5 docker images
 on:
   push:
     branches:
@@ -7,7 +7,7 @@ on:
     - WIP
     pathes:
     - 'cmake/**'
-    - 'docker/**'
+    - 'docker/python3.5/**'
     - 'projects/**'
     - 'CMakeLists.txt'
     - 'xstartup'
@@ -19,7 +19,6 @@ jobs:
       uses: actions/checkout@master
       with:
         fetch-depth: 1
-
     - name: Build Linux docker image
       env:
         DOCKER_IMAGE_NAME: ultimaker/cura-build-environment
@@ -28,7 +27,7 @@ jobs:
         DOCKER_IO: docker.io
         DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-      run: .github/workflows/build.sh
+      run: .github/workflows/build-python3.5-linux.sh
 
   build-windows:
     runs-on: self-hosted
@@ -45,4 +44,4 @@ jobs:
         DOCKER_IO: docker.io
         DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-      run: .github/workflows/build.ps1
+      run: .github/workflows/build-python3.5-windows.ps1
