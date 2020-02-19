@@ -1,0 +1,26 @@
+---
+name: Build Python 3.7 Windows image
+on:
+  push:
+    branches:
+    - master
+    - WIP
+    - WIP_py3.7
+    pathes:
+    - 'docker/python3.7/windows/**'
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+    - name: Checkout master
+      uses: actions/checkout@master
+      with:
+        fetch-depth: 1
+    - name: Build docker image
+      env:
+        DOCKER_IMAGE_NAME: ultimaker/cura-build-environment
+        GIT_REF: ${{ github.ref }}
+        DOCKER_SERVER: ${{ secrets.DockerServer }}
+        DOCKER_USER: ${{ secrets.DockerUsername }}
+        DOCKER_PASSWORD: ${{ secrets.DockerPassword }}
+      run: .github/workflows/build-python3.7-windows.ps1

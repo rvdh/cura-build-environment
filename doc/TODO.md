@@ -15,3 +15,7 @@ The current Python 3.7-base Windows image has all the toolchains and libraries i
    branches, which can be a lot of work. An "easier" approach can be to compile CuraEngine during packaging in
    `cura-build` as what we do right now. To do this, protobuf and libArcus need to be compiled and installed in the
    Python 3.7-based Windows image with MinGW 64.
+
+## Use GitHub docker registry
+
+Change the GitHub workflows to push images to the GitHub docker registry.
