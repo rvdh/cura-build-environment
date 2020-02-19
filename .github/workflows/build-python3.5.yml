@@ -24,9 +24,9 @@ jobs:
         DOCKER_IMAGE_NAME: ultimaker/cura-build-environment
         DOCKER_IMAGE_LATEST_TAG: centos-latest
         GIT_REF: ${{ github.ref }}
-        DOCKER_IO: docker.io
-        DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        DOCKER_SERVER: ${{ secrets.DockerServer }}
+        DOCKER_USER: ${{ secrets.DockerUsername }}
+        DOCKER_PASSWORD: ${{ secrets.DockerPassword }}
       run: .github/workflows/build-python3.5-linux.sh
 
   build-windows:
@@ -41,7 +41,7 @@ jobs:
         DOCKER_IMAGE_NAME: ultimaker/cura-build-environment
         DOCKER_IMAGE_LATEST_TAG: win1809-latest
         GIT_REF: ${{ github.ref }}
-        DOCKER_IO: docker.io
-        DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        DOCKER_SERVER: ${{ secrets.DockerServer }}
+        DOCKER_USER: ${{ secrets.DockerUsername }}
+        DOCKER_PASSWORD: ${{ secrets.DockerPassword }}
       run: .github/workflows/build-python3.5-windows.ps1
