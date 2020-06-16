@@ -25,8 +25,8 @@ if [ -n "${CURA_OSX_SDK_VERSION}" ]; then
     echo "Set CMAKE_OSX_SYSROOT to ${CMAKE_OSX_SYSROOT}"
 fi
 
-export CMAKE_CXX_FLAGS="-stdlib=libc++"
-export CXXFLAGS="-stdlib=libc++"
+export CMAKE_CXX_FLAGS="-stdlib=libc++ -std=c++1z"
+export CXXFLAGS="-stdlib=libc++ -std=c++1z"
 
 export CC="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
 export CXX="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"

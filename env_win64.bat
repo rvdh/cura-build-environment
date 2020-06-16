@@ -1,6 +1,6 @@
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
 set CFLAGS=-m64
-set CXXFLAGS=-m64
+set "CXXFLAGS=-m64 -std=c++17"
 set LDFLAGS=-m64
 
 REM cryptography by default links to OpenSSL 1.1.0 which has different library
