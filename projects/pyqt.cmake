@@ -8,13 +8,9 @@ if(BUILD_OS_WINDOWS)
     SetProjectDependencies(TARGET PyQt DEPENDS Python)
 else()
     if(BUILD_OS_OSX)
-        set(pyqt_command
-            "DYLD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib"
-            ${Python3_EXECUTABLE} configure.py
-            --sysroot ${CMAKE_INSTALL_PREFIX}
-            --qmake ${CMAKE_INSTALL_PREFIX}/bin/qmake
-            --sip ${CMAKE_INSTALL_PREFIX}/bin/sip
-            --confirm-license
+        add_custom_target(PyQt
+           COMMAND ${Python3_EXECUTABLE} -m pip install PyQt5==5.15.2
+           COMMENT "Installing PyQt5"
         )
     else()
         set(pyqt_command
@@ -26,15 +22,16 @@ else()
             --sip ${CMAKE_INSTALL_PREFIX}/bin/sip
             --confirm-license
         )
+
+        ExternalProject_Add(PyQt
+            URL https://downloads.sourceforge.net/project/pyqt/PyQt5/PyQt-5.10/PyQt5_gpl-5.10.tar.gz
+            URL_MD5 4874c5985246fdeb4c3c7843a3e6ef53
+            CONFIGURE_COMMAND ${pyqt_command}
+            BUILD_IN_SOURCE 1
+        )
+
     endif()
 
-    ExternalProject_Add(PyQt
-        URL https://downloads.sourceforge.net/project/pyqt/PyQt5/PyQt-5.10/PyQt5_gpl-5.10.tar.gz
-        URL_MD5 4874c5985246fdeb4c3c7843a3e6ef53
-        CONFIGURE_COMMAND ${pyqt_command}
-        BUILD_IN_SOURCE 1
-    )
-
-    SetProjectDependencies(TARGET PyQt DEPENDS Qt Sip)
+    SetProjectDependencies(TARGET PyQt DEPENDS Sip)
 
 endif()

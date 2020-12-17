@@ -8,9 +8,9 @@ if(BUILD_OS_OSX)
     # The interpreter crashes when MACOSX_DEPLOYMENT_TARGET=10.7 due to the increased stack size.
     set(python_patch_command sed -i".bak" "9271,9271d" <SOURCE_DIR>/configure)
     if(CMAKE_OSX_SYSROOT)
-        set(python_configure_command ${python_configure_command} --enable-universalsdk=${CMAKE_OSX_SYSROOT})
+        set(python_configure_command ${python_configure_command} )
     else()
-        set(python_configure_command ${python_configure_command} --enable-universalsdk)
+        set(python_configure_command ${python_configure_command} )
     endif()
 endif()
 
@@ -26,7 +26,7 @@ endif()
 if(BUILD_OS_WINDOWS)
     # Otherwise Python will not be able to get external dependencies.
     find_package(Subversion REQUIRED)
-    
+
     set(python_configure_command )
 
     # Use the Windows Batch script to pass an argument "/p:PlatformToolset=v140". The argument must have double quotes
@@ -42,8 +42,8 @@ if(BUILD_OS_WINDOWS)
 endif()
 
 ExternalProject_Add(Python
-    URL https://www.python.org/ftp/python/3.5.7/Python-3.5.7.tgz
-    URL_MD5 92f4c16c55429bf986f5ab45fe3a6659
+    URL https://www.python.org/ftp/python/3.9.1/Python-3.9.1.tgz
+    URL_MD5 429ae95d24227f8fa1560684fad6fca7
     PATCH_COMMAND ${python_patch_command}
     CONFIGURE_COMMAND "${python_configure_command}"
     BUILD_COMMAND ${python_build_command}
@@ -68,11 +68,11 @@ ExternalProject_Add_Step(Python ensurepip
 )
 
 ExternalProject_Add_Step(Python upgrade_packages
-    COMMAND ${Python3_EXECUTABLE} -m pip install pip==19.3.1
-    COMMAND ${Python3_EXECUTABLE} -m pip install setuptools==41.4.0
-    COMMAND ${Python3_EXECUTABLE} -m pip install pytest==5.2.1
-    COMMAND ${Python3_EXECUTABLE} -m pip install pytest-benchmark==3.2.2
-    COMMAND ${Python3_EXECUTABLE} -m pip install pytest-cov==2.8.1
-    COMMAND ${Python3_EXECUTABLE} -m pip install mypy==0.740
+    COMMAND ${Python3_EXECUTABLE} -m pip install pip==20.3.3
+    COMMAND ${Python3_EXECUTABLE} -m pip install setuptools==51.0.0
+    COMMAND ${Python3_EXECUTABLE} -m pip install pytest==6.2.1
+    COMMAND ${Python3_EXECUTABLE} -m pip install pytest-benchmark==3.2.3
+    COMMAND ${Python3_EXECUTABLE} -m pip install pytest-cov==2.10.1
+    COMMAND ${Python3_EXECUTABLE} -m pip install mypy==0.790
     DEPENDEES ensurepip
 )

@@ -28,5 +28,5 @@ fi
 export CMAKE_CXX_FLAGS="-stdlib=libc++"
 export CXXFLAGS="-stdlib=libc++"
 
-export CC="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
-export CXX="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+export CC="/Library/Developer/CommandLineTools/usr/bin/clang"
+export CXX="/Library/Developer/CommandLineTools/usr/bin/clang++"
