@@ -8,7 +8,7 @@ if [ ! -d build ]; then
 fi
 cd build
 
-source env_osx.sh
+source ../env_osx.sh
 
 if [ ! -e /usr/local/include/X11 ]; then
   sudo ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/X11 /usr/local/include/X11
