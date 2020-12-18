@@ -3,6 +3,8 @@
 set -eo pipefail
 cbe_install_dir=cbe_install_dir
 
+brew install cmake gcc gfortran protobuf qt
+
 if [ ! -d build ]; then
   mkdir build
 fi
