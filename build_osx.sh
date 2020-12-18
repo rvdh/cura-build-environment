@@ -1,9 +1,9 @@
 #!/bin/sh
+# Brew install qt/gcc might return non-zero exit values even though installation was succesfull
+brew install cmake gcc gfortran protobuf qt
 
 set -eo pipefail
 cbe_install_dir=cbe_install_dir
-
-brew install cmake gcc gfortran protobuf qt
 
 if [ ! -d build ]; then
   mkdir build
