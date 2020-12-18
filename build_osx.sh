@@ -1,6 +1,14 @@
 #!/bin/sh
 # Brew install qt/gcc might return non-zero exit values even though installation was succesfull
-brew install cmake gcc gfortran protobuf qt
+
+for package in cmake gcc protobuf qt; do
+    if ! brew list --versions "${package}" 1>/dev/null; then
+        brew install "${package}"
+        if [ "${package}" == "gcc" ]; then
+            brew link --overwrite gcc
+        fi
+    fi
+done
 
 set -eo pipefail
 cbe_install_dir=cbe_install_dir
